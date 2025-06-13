@@ -11,10 +11,10 @@ public class StringSort {
         char[] charArray = input.toCharArray();
         Arrays.sort(charArray);
 
-        StringBuilder result = new StringBuilder();
+        String result = "";
         for (char c : charArray) {
-            if (result.indexOf(String.valueOf(c)) == -1) {
-                result.append(c);
+            if (!result.contains(String.valueOf(c))) {
+                result += c;
             }
         }
         System.out.println("Sorted string: " + result);
