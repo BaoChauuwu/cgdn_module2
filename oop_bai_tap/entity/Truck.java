@@ -21,6 +21,11 @@ public class Truck extends Vehicle{
     }
 
     @Override
+    public String getInfoToCSV() {
+        return "";
+    }
+
+    @Override
     public String toString() {
         return "Truck{" +
                 "loadCapacity=" + loadCapacity +

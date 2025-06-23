@@ -6,6 +6,14 @@ public class Car extends Vehicle{
 
     public Car() {
     }
+//    private String licensePlate;
+//    private String manufacturerName;
+//    private int manufactureYear;
+//    private String ownerName;
+    @Override
+    public String getInfoToCSV() {
+        return this.getLicensePlate()+","+this.getManufacturerName()+","+this.getManufactureYear()+","+this.getOwnerName()+","+this.getSeatCount()+","+this.getCarType();
+    }
 
 
     public Car(int seatCount, String carType) {
@@ -38,6 +46,7 @@ public class Car extends Vehicle{
     @Override
     public String toString() {
         return "Car{" +
+                super.toString() +
                 "seatCount=" + seatCount +
                 ", carType='" + carType + '\'' +
                 '}';

@@ -2,29 +2,35 @@ package oop_bai_tap.repository;
 
 import oop_bai_tap.entity.Car;
 import oop_bai_tap.entity.Motobike;
+import oop_bai_tap.util.ReadAndWriteFile;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MotobikeRepository {
-    List<Motobike> listMotobike = new ArrayList<Motobike>();
+public class MotobikeRepository implements IMotobikeRepository {
 
-    public MotobikeRepository() {
-        listMotobike.add(new Motobike("43-K1-678.56","Yamaha",2019,"Nguyễn Văn A",100));
-        listMotobike.add(new Motobike("43-H1-345.89","Honda",2019,"Nguyễn Văn B",150));
-        listMotobike.add(new Motobike("43-AK-765.23","Yamaha",2019,"Nguyễn Văn C",50));
+
+    @Override
+    public List<Motobike> findAll() {
+        List<Motobike> motobikeList = new ArrayList<>();
+        List<String> stringList = ReadAndWriteFile.readFromFile("oop_bai_tap/data/motobike.csv");
+        String[] array = null;
+        for (String string : stringList) {
+            array = string.split(",");
+            Motobike motobike = new Motobike(array[0],array[1],Integer.parseInt(array[3]),array[4],Double.parseDouble(array[5]));
+            motobikeList.add(motobike);
+        }
+        return motobikeList;
     }
-    public void addMotobike(Motobike motobike) {
-        listMotobike.add(motobike);
+
+    @Override
+    public void addMotobikeToCar(Car car) {
+
     }
 
-
-    public List<Motobike> getListMotobike() {
-        return listMotobike;
-    }
-
-    public void findMotobikeByLicensePlate(String licensePlate){
-        listMotobike.removeIf(m -> m.getLicensePlate().equals(licensePlate));
+    @Override
+    public boolean deleteMotobikeFromCar(Car car) {
+        return false;
     }
 }
 

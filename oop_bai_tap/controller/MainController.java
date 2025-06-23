@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class MainController {
     private ITruckService iTruckService = new TruckService();
-    private ICarService iCarService = new CarService();
+    private CarService carService = new CarService();
     private IMotobikeService iMotobikeService = new MotobikeService();
     private static Scanner sc = new Scanner(System.in);
     MainView mainView = new MainView();
@@ -55,7 +55,9 @@ public class MainController {
                 break;
 
             case 2:
+
                 addCar();
+
                 break;
             case 3:
                 addMotobike();
@@ -84,21 +86,10 @@ public class MainController {
                 }
                 break;
             case 2:
-                List<Car> cars = iCarService.getCarList();
-                if (cars.isEmpty()) {
-                    System.out.println("Không có xe oto nào trong hệ thống.");
-                } else {
-                    System.out.println("Danh sách xe tải: ");
-                    for (Car car : cars) {
-                        System.out.println("Biển số: " + car.getLicensePlate());
-                        System.out.println("Hãng sản xuất: " + car.getManufactureYear());
-                        System.out.println("Năm sản xuất: " + car.getManufactureYear());
-                        System.out.println("Chủ sở hữu: " + car.getOwnerName());
-                        System.out.println("Số lượng ghế" + car.getSeatCount());
-                        System.out.println("Kiểu xe: " + car.getCarType());
-                        System.out.println("-----------------------------------------");
-                    }
-                }
+                List<Car> cars = carService.findAll();
+                for (Car car : cars) {
+                  System.out.println(car);
+              }
                 break;
 
             case 3:
@@ -160,9 +151,9 @@ public class MainController {
         String carType = sc.nextLine();
 
         Car car = new Car(licensePlate, manufacturerName, manufactureYear, ownerName, seatCount, carType);
-        iCarService.addCar(car);
+        carService.addCar(car);
 
-        System.out.println("Xe tai duoc them thanh cong");
+        System.out.println("Xe may duoc them thanh cong");
         displayMenu();
     }
 

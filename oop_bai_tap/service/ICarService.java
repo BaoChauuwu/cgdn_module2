@@ -5,6 +5,7 @@ import oop_bai_tap.entity.Car;
 import java.util.List;
 
 public interface ICarService {
+    List <Car> findAll();
     void addCar(Car car);
-    List<Car> getCarList();
+    boolean deleteCar(Car car);
 }

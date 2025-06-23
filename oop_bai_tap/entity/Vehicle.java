@@ -1,6 +1,6 @@
 package oop_bai_tap.entity;
 
-public  class Vehicle {
+public abstract class Vehicle {
     private String licensePlate;
     private String manufacturerName;
     private int manufactureYear;
@@ -47,14 +47,15 @@ public  class Vehicle {
     public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;
     }
+    public abstract String getInfoToCSV();
 
     @Override
     public String toString() {
-        return "Vehicle{" +
+        return
                 "licensePlate='" + licensePlate + '\'' +
                 ", manufacturerName='" + manufacturerName + '\'' +
                 ", manufactureYear=" + manufactureYear +
-                ", ownerName='" + ownerName + '\'' +
-                '}';
+                ", ownerName='" + ownerName + '\''
+                ;
     }
 }

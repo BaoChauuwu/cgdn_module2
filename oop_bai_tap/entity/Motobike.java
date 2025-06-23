@@ -21,6 +21,11 @@ public class Motobike extends Vehicle {
     }
 
     @Override
+    public String getInfoToCSV() {
+        return "";
+    }
+
+    @Override
     public String toString() {
         return "Motobike{" +
                 "horsePower=" + horsePower +
