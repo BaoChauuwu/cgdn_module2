@@ -9,4 +9,6 @@ public interface IMotobikeRepository {
     List<Motobike> findAll();
     void addMotobikeToCar(Car car);
     boolean deleteMotobikeFromCar(Car car);
+    void addMotobike(Motobike motobike);
+    List<Motobike> getListMotobike();
 }

@@ -9,7 +9,6 @@ import java.util.List;
 
 public class MotobikeRepository implements IMotobikeRepository {
 
-
     @Override
     public List<Motobike> findAll() {
         List<Motobike> motobikeList = new ArrayList<>();
@@ -17,7 +16,7 @@ public class MotobikeRepository implements IMotobikeRepository {
         String[] array = null;
         for (String string : stringList) {
             array = string.split(",");
-            Motobike motobike = new Motobike(array[0],array[1],Integer.parseInt(array[3]),array[4],Double.parseDouble(array[5]));
+            Motobike motobike = new Motobike(array[0], array[1], Integer.parseInt(array[2]), array[3], Double.parseDouble(array[4]));
             motobikeList.add(motobike);
         }
         return motobikeList;
@@ -31,6 +30,22 @@ public class MotobikeRepository implements IMotobikeRepository {
     @Override
     public boolean deleteMotobikeFromCar(Car car) {
         return false;
+    }
+
+    @Override
+    public void addMotobike(Motobike motobike) {
+        List<Motobike> motobikeList = getListMotobike();
+        motobikeList.add(motobike);
+        List<String> stringList = new ArrayList<>();
+        for (Motobike mb : motobikeList) {
+            stringList.add(mb.getLicensePlate() + "," + mb.getManufacturerName() + "," + mb.getManufactureYear() + "," + mb.getOwnerName() + "," + mb.getHorsePower());
+        }
+        ReadAndWriteFile.writeToFile("oop_bai_tap/data/motobike.csv", stringList, false);
+    }
+
+    @Override
+    public List<Motobike> getListMotobike() {
+        return findAll();
     }
 }
 
