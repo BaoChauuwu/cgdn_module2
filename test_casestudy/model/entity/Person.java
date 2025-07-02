@@ -1,22 +1,20 @@
-package casestudy.model.entity;
+package test_casestudy.model.entity;
 
 public abstract class Person {
     private String id;
+    private String code;
     private String name;
     private String email;
     private String dateOfBirth;
-    private int age;
 
-    public Person() {
-    }
-
-    public Person(String id, String name, String email, String dateOfBirth, int age) {
+    public Person(String id, String code, String name, String email, String dateOfBirth) {
         this.id = id;
+        this.code = code;
         this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
-        this.age = age;
     }
+    public Person() {}
 
     public String getId() {
         return id;
@@ -24,6 +22,14 @@ public abstract class Person {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getName() {
@@ -50,24 +56,16 @@ public abstract class Person {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public abstract String getInfoToCSV();
 
     @Override
     public String toString() {
         return "Person{" +
                 "id='" + id + '\'' +
+                ", code='" + code + '\'' +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", age=" + age +
                 '}';
     }
 }

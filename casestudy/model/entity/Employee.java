@@ -43,6 +43,11 @@ public class Employee extends Person {
     }
 
     @Override
+    public String getInfoToCSV() {
+        return this.getId() + "," + this.getName() + "," + this.getEmail() + "," + this.getDateOfBirth() + "," + this.getAge() + "," + this.getPosition() + "," + this.getSalary() + "," + this.getWorkLocation();
+    }
+
+    @Override
     public String toString() {
         return "Employee{" +
                 super.toString() +
