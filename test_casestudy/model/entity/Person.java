@@ -65,7 +65,6 @@ public abstract class Person {
                 ", code='" + code + '\'' +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
-                '}';
+                ", dateOfBirth='" + dateOfBirth + '\'';
     }
 }
